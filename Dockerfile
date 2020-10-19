@@ -11,12 +11,12 @@ RUN apk add --no-cache curl \
  && pip3 install radicale~=3.0 \
  && pip3 install --upgrade https://github.com/Unrud/RadicaleIMAP/archive/master.tar.gz
 
-COPY radicale.conf /default.conf
+COPY ./conf/radicale.conf /default.conf
 
 EXPOSE 5232/tcp
 VOLUME ["/data"]
 
-ADD ./start.sh /start.sh
+ADD ./sh/start.sh /start.sh
 RUN chmod +x /start.sh
 
 ENTRYPOINT /start.sh
